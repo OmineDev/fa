@@ -28,7 +28,7 @@ func main() {
 	}
 	nfa.AddExtend('*', "{any}", AnyTransCondict)
 
-	code := gen_code.GenCodeFromStr("number", `((/ |-#)(((/d/d*)#(/ |(b#)|(s#)|(l#)))|((/d/d*./d*)|(/d*./d/d*))#)(/ |(E(/ |-#)(/d/d*)#))(/ |(f#)|(d#)))|(true#)|(false#)`)
+	code := gen_code.GenCodeFromStr("number", `((/ |-#)(((/d/d*)#(/ |((b|B)#)|((s|S)#)|((l|L)#)))|((/d/d*./d*)|(/d*./d/d*))#)(/ |((e|E)(/ |-#)(/d/d*)#))(/ |((f|F)#)|((d|D)#)))|(true#)|(false#)`)
 	os.WriteFile("number_core.go", []byte(code), 0755)
 
 	var WhiteSpaceTransCondict = nfa.TransitCond{}
